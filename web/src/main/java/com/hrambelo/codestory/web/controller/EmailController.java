@@ -20,7 +20,6 @@ public class EmailController {
 
     @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public @ResponseBody String showEmail(@RequestParam("q") String question){
-        String answer = (question.contains("email"))? "bensmania@gmail.com" : "wrong question, ask my email instead";
-        return answer;
+        return (question.contains("email"))? "bensmania@gmail.com" : "wrong question, ask my email instead";
     }
 }
