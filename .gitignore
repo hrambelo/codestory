@@ -1,6 +1,48 @@
+# OS special files #
+####################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+*~
+temp/
+tmp/
+
+# compiled Sources #
+####################
 *.class
 
+# IDE related files #
+#####################
+*.iml
+.idea/
+
 # Package Files #
+#################
 *.jar
 *.war
 *.ear
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+*.gzip
+
+# Logs and databases #
+######################
+*.log
+
+# Compilation dir #
+###################
+target/
+bin/
+classes/
+
+# CVS files #
+#############
+.git
