@@ -16,4 +16,8 @@
     <name>hrambelo codestory business</name>
     <description>Business part</description>
 
+    <modules>
+        <module>email</module>
+    </modules>
+
 </project>
