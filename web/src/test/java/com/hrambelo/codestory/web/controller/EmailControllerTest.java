@@ -25,7 +25,6 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  */
 public class EmailControllerTest {
 
-    private EmailController emailController;
     private MockMvc mockMvc;
 
     @Before
@@ -33,11 +32,6 @@ public class EmailControllerTest {
         EmailController emailController = new EmailController();
         mockMvc = standaloneSetup(emailController)
                 .build();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        emailController = null;
     }
 
     @Test
