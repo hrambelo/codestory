@@ -1,5 +1,6 @@
 package com.hrambelo.codestory.web.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/")
 public class EmailController {
 
-    @RequestMapping(produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public @ResponseBody String showEmail(@RequestParam("q") String question){
-        String answer = (question.contains("email"))? "bensmania@gmail.com" : "ask me my email";
+        String answer = (question.contains("email"))? "bensmania@gmail.com" : "wrong question, ask my email instead";
         return answer;
     }
 }
