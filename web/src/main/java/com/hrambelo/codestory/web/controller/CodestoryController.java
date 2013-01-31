@@ -3,6 +3,7 @@ package com.hrambelo.codestory.web.controller;
 import com.hrambelo.codestory.web.service.manager.factory.ManagerFactory;
 import com.hrambelo.codestory.web.service.manager.AFactory;
 import com.hrambelo.codestory.web.service.manager.QuestionManager;
+import com.hrambelo.codestory.web.service.scalaskel.ExchangeService;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.slf4j.Logger;
@@ -39,4 +40,12 @@ public class CodestoryController {
         logger.info("POST: " +id+ "=" +body);
     }
 
+    @RequestMapping(value = "scalaskel/change/{amount}", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody String compute(@PathVariable int amount) throws IOException {
+        List<Object> results = new ExchangeService(amount).exchange();
+        // Mapper json avec option d'inclusion
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonSerialize.Inclusion.NON_DEFAULT);
+        return mapper.writeValueAsString(results);
+    }
 }
