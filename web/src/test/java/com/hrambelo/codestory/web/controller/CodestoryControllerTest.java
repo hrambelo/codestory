@@ -74,6 +74,12 @@ public class CodestoryControllerTest {
     }
 
     @Test
+    public void testPostEnonce() throws Exception {
+        mockMvc.perform(post("/enonce/1"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
     public void shouldNotPost() throws Exception {
         mockMvc
                 .perform(post("/").param("q", "sample"))
