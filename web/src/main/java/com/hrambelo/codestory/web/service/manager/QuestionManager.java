@@ -24,6 +24,8 @@ public class QuestionManager {
     private IAnswer performSuperTrickyRouteCalculation(String question) {
         //Todo implement a better route handling àla if-free :(
 
+        // Dude I can't believe I wrote those kind of badass code :'(
+        //Do me favor guys :)
         IAnswer result = managerFactory.createDefaultRoute();
         if(question.contains("email")){
             result = managerFactory.createEmailAnswer();
