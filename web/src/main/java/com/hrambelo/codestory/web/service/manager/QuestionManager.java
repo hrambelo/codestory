@@ -18,6 +18,10 @@ public class QuestionManager {
     }
 
     public IAnswer configureRoute(String question) {
+        return performSuperTrickyRouteCalculation(question);
+    }
+
+    private IAnswer performSuperTrickyRouteCalculation(String question) {
         //Todo implement a better route handling àla if-free :(
 
         IAnswer result = managerFactory.createDefaultRoute();
@@ -31,9 +35,9 @@ public class QuestionManager {
             result = managerFactory.createMarkDownAnswer();
         } else if (question.contains("toujours")) {
             result = managerFactory.createAlwaysYesAnswer();
-        } else if (question.contains("bien+recu+le+premier+enonce")) {
+        } else if (question.contains("recu")) {
             result = managerFactory.createReceiveAllAnswer();
-        } else if (question.contains("passe+une+bonne+nuit")){
+        } else if (question.contains("nuit")){
             result = managerFactory.createGoodNightAnswer();
         }
         return result;
