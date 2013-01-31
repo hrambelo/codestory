@@ -3,6 +3,9 @@ package com.hrambelo.codestory.web.controller;
 import com.hrambelo.codestory.web.service.manager.factory.ManagerFactory;
 import com.hrambelo.codestory.web.service.manager.AFactory;
 import com.hrambelo.codestory.web.service.manager.QuestionManager;
+import com.hrambelo.codestory.web.service.math.AMathFactory;
+import com.hrambelo.codestory.web.service.math.MathManager;
+import com.hrambelo.codestory.web.service.math.factory.MathFactory;
 import com.hrambelo.codestory.web.service.scalaskel.ExchangeService;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -26,12 +29,23 @@ import java.util.List;
 @RequestMapping("/")
 public class CodestoryController {
 
-    private static final AFactory factory = new ManagerFactory();
+    private static final AFactory answerFactory = new ManagerFactory();
+    private static final AMathFactory mathFactory = new MathFactory();
     private static final Logger logger = LoggerFactory.getLogger(CodestoryController.class);
 
     @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    public @ResponseBody String handleQuestion(@RequestParam("q") String question){
-        return new QuestionManager(factory).configureRoute(question).answer();
+    public @ResponseBody String handleQuestion( @RequestParam("q") String question){
+        String regex = "((\\d+)(\\s)(\\d+))";
+        if (question.matches(regex)){
+            String[] s = question.split("\\s");
+            return String.valueOf(new MathManager(mathFactory)
+                    //.defineComputation(s[1])
+                    .compute(s[0], s[1]));
+        }else{
+            return new QuestionManager(answerFactory)
+                    .configureRoute(question)
+                    .answer();
+        }
     }
 
     @RequestMapping(value= "enonce/{id}", method=RequestMethod.POST)
@@ -44,8 +58,8 @@ public class CodestoryController {
     public @ResponseBody String compute(@PathVariable int amount) throws IOException {
         List<Object> results = new ExchangeService(amount).exchange();
         // Mapper json avec option d'inclusion
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setSerializationInclusion(JsonSerialize.Inclusion.NON_DEFAULT);
-        return mapper.writeValueAsString(results);
+        return new ObjectMapper()
+                .setSerializationInclusion(JsonSerialize.Inclusion.NON_DEFAULT)
+                .writeValueAsString(results);
     }
 }
