@@ -1,7 +1,7 @@
 package com.hrambelo.codestory.web.controller;
 
-import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,23 +23,24 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  * Package: com.hrambelo.codestory.web.controller
  * Codestory
  */
-public class EmailControllerTest {
+public class CodestoryControllerTest {
 
     private MockMvc mockMvc;
 
     @Before
     public void setUp() {
-        EmailController emailController = new EmailController();
-        mockMvc = standaloneSetup(emailController)
+        CodestoryController codestoryController = new CodestoryController();
+        mockMvc = standaloneSetup(codestoryController)
                 .build();
     }
 
+    @Ignore
     @Test
-    public void testShowEmailFail() throws Exception {
-        mockMvc.perform(get("/").param("q", "toto"))
+    public void testHome() throws Exception {
+        mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("wrong question, ask my email instead"));
+                .andExpect(content().string("go and see <a href=\"http://code-story.net/\">codestory 2013</a>"));
     }
 
     @Test
@@ -48,6 +49,14 @@ public class EmailControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string("bensmania@gmail.com"));
+    }
+
+    @Test
+    public void testSayYes() throws Exception {
+        mockMvc.perform(get("/").param("q", "heureux"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("OUI"));
     }
 
     @Test
