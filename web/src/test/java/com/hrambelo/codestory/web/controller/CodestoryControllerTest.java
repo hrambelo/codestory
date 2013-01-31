@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.mockito.Matchers.anyString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -62,7 +61,7 @@ public class CodestoryControllerTest {
     @Test
     public void shouldNotPost() throws Exception {
         mockMvc
-                .perform(post("/").param("q", anyString()))
+                .perform(post("/").param("q", "sample"))
                 .andExpect(status().isMethodNotAllowed())
                 .andExpect(header()
                         .string("Allow", is("GET")));
