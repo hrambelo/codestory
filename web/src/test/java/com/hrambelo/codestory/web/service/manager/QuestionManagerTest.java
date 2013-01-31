@@ -1,8 +1,6 @@
 package com.hrambelo.codestory.web.service.manager;
 
-import com.hrambelo.codestory.web.service.manager.impl.Email;
-import com.hrambelo.codestory.web.service.manager.impl.Happy;
-import com.hrambelo.codestory.web.service.manager.impl.Mailing;
+import com.hrambelo.codestory.web.service.manager.impl.*;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,13 +40,13 @@ public class QuestionManagerTest {
         IAnswer mockMailing = mock(Mailing.class);
         doReturn("OUI").when(mockMailing).answer();
         when(mockFactory.createMailingAnswer()).thenReturn(mockMailing);
+        IAnswer mockMarkDown = mock(MarkDown.class);
+        doReturn("markDown yeah").when(mockMarkDown).answer();
+        when(mockFactory.createMarkDownAnswer()).thenReturn(mockMarkDown);
+        IAnswer mockStillthere = mock(StillAnswer.class);
+        doReturn("always there").when(mockStillthere).answer();
+        when(mockFactory.createStillThereAnswer()).thenReturn(mockStillthere);
         /*IAnswer mockEmail = mock(Email.class);
-        doReturn("bensmania@gmail.com").when(mockEmail).answer();
-        when(mockFactory.createEmailAnswer()).thenReturn(mockEmail);
-        IAnswer mockEmail = mock(Email.class);
-        doReturn("bensmania@gmail.com").when(mockEmail).answer();
-        when(mockFactory.createEmailAnswer()).thenReturn(mockEmail);
-        IAnswer mockEmail = mock(Email.class);
         doReturn("bensmania@gmail.com").when(mockEmail).answer();
         when(mockFactory.createEmailAnswer()).thenReturn(mockEmail);*/
 
@@ -70,6 +68,18 @@ public class QuestionManagerTest {
     public void testConfigureRouteMailing() throws Exception {
         IAnswer result = questionManager.configureRoute("mailing");
         assertEquals("OUI", result.answer());
+    }
+
+    @Test
+    public void testConfigureRouteMarkdown() throws Exception {
+        IAnswer result = questionManager.configureRoute("markdown");
+        assertEquals("markDown yeah", result.answer());
+    }
+
+    @Test
+    public void testConfigureRouteStilThere() throws Exception {
+        IAnswer result = questionManager.configureRoute("tu+reponds+toujours");
+        assertEquals("always there", result.answer());
     }
 
 }

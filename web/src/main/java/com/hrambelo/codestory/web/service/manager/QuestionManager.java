@@ -1,8 +1,8 @@
 package com.hrambelo.codestory.web.service.manager;
 
-import com.hrambelo.codestory.web.service.manager.impl.Email;
-
 /**
+ * Responsible for handling question and choose routes
+ *
  * Created with IntelliJ IDEA.
  * User: bensmania <a href="mailto:bensmania@gmail.com">bensmania@gmail.com</a>
  * Date: 30/01/13 - Time: 20:05
@@ -29,11 +29,11 @@ public class QuestionManager {
             result = managerFactory.createMailingAnswer();
         } else if (question.contains("markdown")) {
             result = managerFactory.createMarkDownAnswer();
-        } else if (question.contains("tu reponds toujours")) {
+        } else if (question.contains("tu+reponds+toujours")) {
             result = managerFactory.createStillThereAnswer();
-        } else if (question.contains("bien recu le premier enonce")) {
+        } else if (question.contains("bien+recu+le+premier+enonce")) {
             result = managerFactory.createReceiveAllAnswer();
-        } else if (question.contains("passe une bonne nuit")){
+        } else if (question.contains("passe+une+bonne+nuit")){
             result = managerFactory.createGoodNightAnswer();
         }
         return result;

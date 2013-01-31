@@ -58,6 +58,22 @@ public class CodestoryControllerTest {
     }
 
     @Test
+    public void testMarkDown() throws Exception {
+        mockMvc.perform(get("/").param("q", "Es+tu+pret+a+recevoir+une+enonce+au+format+markdown+par+http+post"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("OUI"));
+    }
+
+    @Test
+    public void testStillThere() throws Exception {
+        mockMvc.perform(get("/").param("q", "Est+ce+que+tu+reponds+toujours+oui(OUI/NON)"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("OUI"));
+    }
+
+    @Test
     public void shouldNotPost() throws Exception {
         mockMvc
                 .perform(post("/").param("q", "sample"))
