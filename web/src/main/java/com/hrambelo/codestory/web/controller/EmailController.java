@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created with IntelliJ IDEA.
- * User: bensmania <a href="mailto:bensmania@gmail.com">bensmania@gmail.com</a>
+ * User: bensmania <a href="mailto:bensmania@gmail.com">hrambelo</a>
  * Date: 30/01/13 - Time: 15:17
  * Package: com.hrambelo.codestory.web.controller
  * Codestory

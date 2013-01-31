@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 
 /**
  * Created with IntelliJ IDEA.
- * User: bensmania <a href="mailto:bensmania@gmail.com">bensmania@gmail.com</a>
+ * User: bensmania <a href="mailto:bensmania@gmail.com">hrambelo</a>
  * Date: 30/01/13 - Time: 15:59
  * Package: com.hrambelo.codestory.web.controller
  * Codestory
