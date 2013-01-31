@@ -13,7 +13,7 @@
     <artifactId>codestory-web</artifactId>
     <packaging>war</packaging>
 
-    <name>hrambelo codestory webapp</name>
+    <name>Codestory Web : Webapp</name>
     <description>Webapp part</description>
 
     <dependencies>

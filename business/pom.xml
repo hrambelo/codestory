@@ -13,7 +13,7 @@
     <artifactId>codestory-business</artifactId>
     <packaging>pom</packaging>
 
-    <name>hrambelo codestory business</name>
+    <name>Codestory Business : Root</name>
     <description>Business part</description>
 
     <modules>
