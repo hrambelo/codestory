@@ -33,15 +33,6 @@ public class CodestoryControllerTest {
                 .build();
     }
 
-    @Ignore
-    @Test
-    public void testHome() throws Exception {
-        mockMvc.perform(get("/"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("go and see <a href=\"http://code-story.net/\">codestory 2013</a>"));
-    }
-
     @Test
     public void testShowEmail() throws Exception {
         mockMvc.perform(get("/").param("q", "email"))
