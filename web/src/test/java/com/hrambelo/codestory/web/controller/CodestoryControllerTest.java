@@ -80,6 +80,14 @@ public class CodestoryControllerTest {
     }
 
     @Test
+    public void testReceive() throws Exception {
+        mockMvc.perform(get("/").param("q", "As+tu+bien+recu+le+premier+enonce(OUI/NON)"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("OUI"));
+    }
+
+    @Test
     public void shouldNotPost() throws Exception {
         mockMvc
                 .perform(post("/").param("q", "sample"))

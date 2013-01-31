@@ -44,9 +44,9 @@ public class QuestionManagerTest {
         IAnswer mockStillthere = mock(AlwaysYesAnswer.class);
         doReturn("always there").when(mockStillthere).answer();
         when(mockFactory.createAlwaysYesAnswer()).thenReturn(mockStillthere);
-        /*IAnswer mockEmail = mock(Email.class);
-        doReturn("bensmania@gmail.com").when(mockEmail).answer();
-        when(mockFactory.createEmailAnswer()).thenReturn(mockEmail);*/
+        IAnswer mockReceive = mock(ReceiveFirstSubject.class);
+        doReturn("5/5").when(mockReceive).answer();
+        when(mockFactory.createReceiveAllAnswer()).thenReturn(mockReceive);
 
     }
 
@@ -78,6 +78,12 @@ public class QuestionManagerTest {
     public void testConfigureRouteStilThere() throws Exception {
         IAnswer result = questionManager.configureRoute("tu+reponds+toujours");
         assertEquals("always there", result.answer());
+    }
+
+    @Test
+    public void testConfigureRouteReceive() throws Exception {
+        IAnswer result = questionManager.configureRoute("bien+recu");
+        assertEquals("5/5", result.answer());
     }
 
 }
