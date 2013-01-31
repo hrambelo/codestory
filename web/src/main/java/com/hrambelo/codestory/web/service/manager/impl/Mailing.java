@@ -13,6 +13,6 @@ public class Mailing implements IAnswer {
 
     @Override
     public String answer() {
-        return "NON";
+        return "OUI";
     }
 }

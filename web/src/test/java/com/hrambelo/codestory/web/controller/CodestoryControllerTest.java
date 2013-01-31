@@ -42,8 +42,16 @@ public class CodestoryControllerTest {
     }
 
     @Test
-    public void testSayYes() throws Exception {
+    public void testHappy() throws Exception {
         mockMvc.perform(get("/").param("q", "heureux"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().string("OUI"));
+    }
+
+    @Test
+    public void testMailing() throws Exception {
+        mockMvc.perform(get("/").param("q", "Es+tu+abonne+a+la+mailing+list(OUI/NON)"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().string("OUI"));
