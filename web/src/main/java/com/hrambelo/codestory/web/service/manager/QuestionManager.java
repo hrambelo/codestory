@@ -29,8 +29,8 @@ public class QuestionManager {
             result = managerFactory.createMailingAnswer();
         } else if (question.contains("markdown")) {
             result = managerFactory.createMarkDownAnswer();
-        } else if (question.contains("tu+reponds+toujours")) {
-            result = managerFactory.createStillThereAnswer();
+        } else if (question.contains("toujours")) {
+            result = managerFactory.createAlwaysYesAnswer();
         } else if (question.contains("bien+recu+le+premier+enonce")) {
             result = managerFactory.createReceiveAllAnswer();
         } else if (question.contains("passe+une+bonne+nuit")){

@@ -10,10 +10,10 @@ import com.hrambelo.codestory.web.service.manager.IAnswer;
  * Package: com.mkyong.common.manager.impl
  * Codestory
  */
-public class StillAnswer implements IAnswer {
+public class AlwaysYesAnswer implements IAnswer {
 
     @Override
     public String answer() {
-        return "OUI";
+        return "NON";
     }
 }

@@ -66,11 +66,11 @@ public class CodestoryControllerTest {
     }
 
     @Test
-    public void testStillThere() throws Exception {
+    public void testAlwaysYes() throws Exception {
         mockMvc.perform(get("/").param("q", "Est+ce+que+tu+reponds+toujours+oui(OUI/NON)"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("OUI"));
+                .andExpect(content().string("NON"));
     }
 
     @Test

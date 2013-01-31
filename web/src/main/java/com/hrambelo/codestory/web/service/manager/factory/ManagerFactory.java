@@ -39,8 +39,8 @@ public class ManagerFactory extends AFactory {
     }
 
     @Override
-    public IAnswer createStillThereAnswer() {
-        return new StillAnswer();
+    public IAnswer createAlwaysYesAnswer() {
+        return new AlwaysYesAnswer();
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.hrambelo.codestory.web.service.manager;
 
 import com.hrambelo.codestory.web.service.manager.impl.*;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -43,9 +41,9 @@ public class QuestionManagerTest {
         IAnswer mockMarkDown = mock(MarkDown.class);
         doReturn("markDown yeah").when(mockMarkDown).answer();
         when(mockFactory.createMarkDownAnswer()).thenReturn(mockMarkDown);
-        IAnswer mockStillthere = mock(StillAnswer.class);
+        IAnswer mockStillthere = mock(AlwaysYesAnswer.class);
         doReturn("always there").when(mockStillthere).answer();
-        when(mockFactory.createStillThereAnswer()).thenReturn(mockStillthere);
+        when(mockFactory.createAlwaysYesAnswer()).thenReturn(mockStillthere);
         /*IAnswer mockEmail = mock(Email.class);
         doReturn("bensmania@gmail.com").when(mockEmail).answer();
         when(mockFactory.createEmailAnswer()).thenReturn(mockEmail);*/

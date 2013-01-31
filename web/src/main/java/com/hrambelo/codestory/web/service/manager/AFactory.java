@@ -19,7 +19,7 @@ public abstract class AFactory {
 
     public abstract IAnswer createReceiveAllAnswer();
 
-    public abstract IAnswer createStillThereAnswer();
+    public abstract IAnswer createAlwaysYesAnswer();
 
     public abstract IAnswer createDefaultRoute();
 
