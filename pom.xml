@@ -37,6 +37,10 @@
         <spring.version>3.2.0.RELEASE</spring.version>
         <jackson-mapper-asl.version>1.9.11</jackson-mapper-asl.version>
 
+        <!--Logger properties-->
+        <slf4j.version>1.6.4</slf4j.version>
+        <logback.version>1.0.9</logback.version>
+
         <!--Test properties-->
         <mockito.version>1.9.5</mockito.version>
         <junit.version>4.10</junit.version>
@@ -71,6 +75,25 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring.version}</version>
+            </dependency>
+
+            <!--Logger dependecy-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
             </dependency>
 
             <!--Test dependency-->
