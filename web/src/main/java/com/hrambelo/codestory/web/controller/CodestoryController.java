@@ -35,17 +35,28 @@ public class CodestoryController {
 
     @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public @ResponseBody String handleQuestion( @RequestParam("q") String question){
-        String regex = "((\\d+)(\\s)(\\d+))";
+        String regex = "(((\\d+)(\\s)(\\d+))|((\\d+)([-+*/])(\\d+)))";
+        String answer = "";
         if (question.matches(regex)){
-            String[] s = question.split("\\s");
-            return String.valueOf(new MathManager(mathFactory)
-                    //.defineComputation(s[1])
-                    .compute(s[0], s[1]));
+            String[] s = null;
+            if (question.contains(" ")){
+                s =  question.split("\\s");
+                answer = String.valueOf(new MathManager(mathFactory)
+                        //.defineComputation(s[1])
+                        .compute(s[0], s[1]));
+            }else{
+                String newRegex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
+                s = question.split(newRegex);
+                answer = String.valueOf(new MathManager(mathFactory)
+                    .defineComputation(s[1])
+                    .compute(s[0], s[2]));
+            }
         }else{
-            return new QuestionManager(answerFactory)
+            answer = new QuestionManager(answerFactory)
                     .configureRoute(question)
                     .answer();
         }
+        return answer;
     }
 
     @RequestMapping(value= "enonce/{id}", method=RequestMethod.POST)
