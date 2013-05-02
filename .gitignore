@@ -6,36 +6,68 @@
 .Spotlight-V100
 .Trashes
 Icon?
+ehthumbs.db
+Thumbs.db
+Thumbs.db
 *~
 temp/
 tmp/
 
-# compiled Sources #
+# IDE special files/folder #
 ####################
-*.class
-
-# IDE related files #
-#####################
+# intellij
 *.iml
 .idea/
+# eclipse
+.classpath
+.project
+.settings/
+# netbeans
+.netbeans
+dist/
 
-# Package Files #
-#################
-*.jar
-*.war
-*.ear
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# IDE special files/folder #
+####################
+# intellij
+*.iml
+.idea/
+# eclipse
+.classpath
+.project
+.settings/
+# netbeans
+.netbeans
+dist/
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
 *.7z
 *.dmg
 *.gz
 *.iso
+*.jar
 *.rar
 *.tar
 *.zip
-*.gzip
+*.war
 
 # Logs and databases #
 ######################
 *.log
+*.sql
+*.sqlite
+
 
 # Compilation dir #
 ###################
@@ -46,3 +78,6 @@ classes/
 # CVS files #
 #############
 .git
+.scc
+.svn
+
