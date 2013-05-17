@@ -48,23 +48,9 @@ public class CodestoryController {
         String regex = "(((\\d+)(\\s)(\\d+))|((\\d+)([-+*/])(\\d+)))";
         String answer = "";
         if (question.matches(regex)){
-            String[] s = null;
-            if (question.contains(" ")){
-                s =  question.split("\\s");
-                answer = String.valueOf(new MathManager(mathFactory)
-                        //.defineComputation(s[1])
-                        .compute(s[0], s[1]));
-            }else{
-                String newRegex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
-                s = question.split(newRegex);
-                answer = String.valueOf(new MathManager(mathFactory)
-                    .defineComputation(s[1])
-                    .compute(s[0], s[2]));
-            }
+            answer = handleMathQuestion(question);
         }else{
-            answer = new QuestionManager(answerFactory)
-                    .configureRoute(question)
-                    .answer();
+            answer = handleGeneralQuestion(question);
         }
         return answer;
     }
@@ -77,10 +63,36 @@ public class CodestoryController {
 
     @RequestMapping(value = "scalaskel/change/{amount}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody String compute(@PathVariable int amount) throws IOException {
-        List<Object> results = new ExchangeService(amount).exchange();
-        // Mapper json avec option d'inclusion
+        List<Object> results = coreFactory.createScalaskelService(scalaskelFactory, amount).exchange();
+        // Mapper json with inclusion option
         return new ObjectMapper()
                 .setSerializationInclusion(JsonSerialize.Inclusion.NON_DEFAULT)
                 .writeValueAsString(results);
+    }
+
+    private String handleGeneralQuestion(String question) {
+        String answer;
+        answer = coreFactory.createQuestionService(answerFactory)
+                .configureRoute(question)
+                .answer();
+        return answer;
+    }
+
+    private String handleMathQuestion(String question) {
+        String answer;
+        String[] s = null;
+        if (question.contains(" ")){
+            s =  question.split("\\s");
+            answer = String.valueOf(coreFactory.createMathService(mathFactory)
+                    //.defineComputation(s[1])
+                    .compute(s[0], s[1]));
+        }else{
+            String newRegex = "(?<=op)|(?=op)".replace("op", "[-+*/()]");
+            s = question.split(newRegex);
+            answer = String.valueOf(coreFactory.createMathService(mathFactory)
+                    .defineComputation(s[1])
+                    .compute(s[0], s[2]));
+        }
+        return answer;
     }
 }
