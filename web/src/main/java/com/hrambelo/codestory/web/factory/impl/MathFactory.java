@@ -1,8 +1,10 @@
-package com.hrambelo.codestory.web.service.math.factory;
+package com.hrambelo.codestory.web.factory.impl;
 
-import com.hrambelo.codestory.web.service.math.AMathFactory;
+import com.hrambelo.codestory.web.factory.AFactory;
 import com.hrambelo.codestory.web.service.math.ICompute;
 import com.hrambelo.codestory.web.service.math.impl.*;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,7 +13,11 @@ import com.hrambelo.codestory.web.service.math.impl.*;
  * Package: com.hrambelo.codestory.web.service.math.factory
  * Codestory
  */
-public class MathFactory extends AMathFactory {
+@Component(value = "arithmFactory")
+//Even Spring's default, clarity rule first FTW
+@Scope("singleton")
+public class MathFactory extends AFactory {
+
     @Override
     public ICompute createAdd() {
         return new ComputeAdd();

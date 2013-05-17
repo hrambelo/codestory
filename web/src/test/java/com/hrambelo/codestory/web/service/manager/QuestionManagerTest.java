@@ -1,5 +1,6 @@
 package com.hrambelo.codestory.web.service.manager;
 
+import com.hrambelo.codestory.web.factory.AFactory;
 import com.hrambelo.codestory.web.service.manager.impl.*;
 import org.junit.Before;
 import org.junit.Test;

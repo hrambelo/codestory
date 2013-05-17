@@ -1,5 +1,6 @@
 package com.hrambelo.codestory.web.service.math;
 
+import com.hrambelo.codestory.web.factory.AFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
@@ -15,11 +16,11 @@ public class MathManager {
 
     private static final Logger logger = LoggerFactory.getLogger(MathManager.class);
 
-    private AMathFactory factory;
+    private final AFactory factory;
 
     private ICompute currentComputation;
 
-    public MathManager(AMathFactory mathFactory) {
+    public MathManager(AFactory mathFactory) {
         this.factory = mathFactory;
         this.currentComputation = factory.createAdd();
     }

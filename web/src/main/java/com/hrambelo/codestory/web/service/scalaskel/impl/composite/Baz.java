@@ -2,7 +2,6 @@ package com.hrambelo.codestory.web.service.scalaskel.impl.composite;
 
 
 import com.hrambelo.codestory.web.service.scalaskel.Combinaison;
-import com.hrambelo.codestory.web.service.scalaskel.factory.ScalaskelFactory;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,7 +13,7 @@ import com.hrambelo.codestory.web.service.scalaskel.factory.ScalaskelFactory;
 public class Baz extends ACompositeMoney {
 
     public Baz() {
-        super("Baz", 21, ScalaskelFactory.createQix());
+        super("Baz", 21, MONEY_FACTORY.createQix());
     }
 
     @Override
@@ -24,6 +23,6 @@ public class Baz extends ACompositeMoney {
 
     @Override
     public Combinaison newCombinaison(Combinaison combinaison) {
-        return ScalaskelFactory.createCombinaison(0, 0, 0, 0);
+        return MONEY_FACTORY.createCombinaison(0, 0, 0);
     }
 }

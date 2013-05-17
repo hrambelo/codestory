@@ -4,7 +4,6 @@ package com.hrambelo.codestory.web.service.scalaskel.impl.composite;
 import com.hrambelo.codestory.web.service.scalaskel.AMoney;
 import com.hrambelo.codestory.web.service.scalaskel.Combinaison;
 import com.hrambelo.codestory.web.service.scalaskel.IVisitor;
-import com.hrambelo.codestory.web.service.scalaskel.factory.ScalaskelFactory;
 
 /**
  *
@@ -34,6 +33,6 @@ public class Foo extends AMoney {
 
     @Override
     public Combinaison newCombinaison(Combinaison combinaison) {
-        return ScalaskelFactory.createCombinaison(combinaison.getBaz(), combinaison.getQix(), combinaison.getBar(), 0);
+        return MONEY_FACTORY.createCombinaison(combinaison.getBaz(), combinaison.getQix(), combinaison.getBar());
     }
 }

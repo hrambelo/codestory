@@ -1,5 +1,7 @@
 package com.hrambelo.codestory.web.service.manager;
 
+import com.hrambelo.codestory.web.factory.AFactory;
+
 /**
  * Responsible for handling question and choose routes
  *

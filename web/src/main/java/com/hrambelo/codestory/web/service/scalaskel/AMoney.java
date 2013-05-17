@@ -1,5 +1,8 @@
 package com.hrambelo.codestory.web.service.scalaskel;
 
+import com.hrambelo.codestory.web.factory.AFactory;
+import com.hrambelo.codestory.web.factory.impl.MoneyFactory;
+
 /**
  * Represent a generic money,
  * play the role of Component in composite pattern,
@@ -14,6 +17,8 @@ package com.hrambelo.codestory.web.service.scalaskel;
  * Codestory
  */
 public abstract class AMoney {
+
+    protected static final AFactory MONEY_FACTORY = new MoneyFactory();
 
     /**
      * A name identify a money

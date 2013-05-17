@@ -1,8 +1,10 @@
-package com.hrambelo.codestory.web.service.manager.factory;
+package com.hrambelo.codestory.web.factory.impl;
 
-import com.hrambelo.codestory.web.service.manager.AFactory;
+import com.hrambelo.codestory.web.factory.AFactory;
 import com.hrambelo.codestory.web.service.manager.IAnswer;
 import com.hrambelo.codestory.web.service.manager.impl.*;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,6 +13,9 @@ import com.hrambelo.codestory.web.service.manager.impl.*;
  * Package: com.mkyong.common.manager.factory
  * Codestory
  */
+@Component(value = "questionFactory")
+//Even Spring's default, clarity rule first FTW
+@Scope("singleton")
 public class ManagerFactory extends AFactory {
 
     @Override

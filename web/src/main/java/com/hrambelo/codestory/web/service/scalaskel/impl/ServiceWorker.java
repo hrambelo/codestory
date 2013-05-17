@@ -3,7 +3,7 @@ package com.hrambelo.codestory.web.service.scalaskel.impl;
 import com.hrambelo.codestory.web.service.scalaskel.AMoney;
 import com.hrambelo.codestory.web.service.scalaskel.Combinaison;
 import com.hrambelo.codestory.web.service.scalaskel.IVisitor;
-import com.hrambelo.codestory.web.service.scalaskel.factory.ScalaskelFactory;
+import com.hrambelo.codestory.web.factory.AFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +20,12 @@ import java.util.List;
 public class ServiceWorker implements IVisitor {
 
     private final List<Combinaison> combinaisons = new ArrayList<Combinaison>();
+    private final AFactory scalaskelFactory;
     private final int total;
 
-    public ServiceWorker(int total) {
+    public ServiceWorker(AFactory scalaskelFactory, int total) {
         this.total = total;
+        this.scalaskelFactory = scalaskelFactory;
     }
 
     @Override
@@ -48,7 +50,7 @@ public class ServiceWorker implements IVisitor {
         while (div >= 0){
             combinaison = money.populateCombinaison(combinaison, div);
             //update total value here
-            IVisitor v = ScalaskelFactory.createServiceWorker(modulo);
+            IVisitor v = scalaskelFactory.createServiceWorker(modulo);
             combinaisons.addAll((List<Combinaison>)money.getChild().accept(v, combinaison));
             combinaison = money.newCombinaison(combinaison);
             div--;
