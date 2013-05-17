@@ -1,16 +1,12 @@
 package com.hrambelo.codestory.web.controller;
 
-import com.hrambelo.codestory.web.service.manager.factory.ManagerFactory;
-import com.hrambelo.codestory.web.service.manager.AFactory;
-import com.hrambelo.codestory.web.service.manager.QuestionManager;
-import com.hrambelo.codestory.web.service.math.AMathFactory;
-import com.hrambelo.codestory.web.service.math.MathManager;
-import com.hrambelo.codestory.web.service.math.factory.MathFactory;
-import com.hrambelo.codestory.web.service.scalaskel.ExchangeService;
+import com.hrambelo.codestory.web.factory.AFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +25,23 @@ import java.util.List;
 @RequestMapping("/")
 public class CodestoryController {
 
-    private static final AFactory answerFactory = new ManagerFactory();
-    private static final AMathFactory mathFactory = new MathFactory();
     private static final Logger logger = LoggerFactory.getLogger(CodestoryController.class);
+
+    @Autowired
+    @Qualifier(value = "coreFactory")
+    private AFactory coreFactory;
+
+    @Autowired
+    @Qualifier(value = "questionFactory")
+    private AFactory answerFactory;
+
+    @Autowired
+    @Qualifier(value = "arithmFactory")
+    private AFactory mathFactory;
+
+    @Autowired
+    @Qualifier(value = "scalaskelFactory")
+    private AFactory scalaskelFactory;
 
     @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     public @ResponseBody String handleQuestion( @RequestParam("q") String question){
