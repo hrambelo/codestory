@@ -3,6 +3,7 @@ package com.hrambelo.codestory.web.service.math;
 import com.hrambelo.codestory.web.factory.AFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.util.Assert;
  * Package: com.hrambelo.codestory.web.service.math
  * Codestory
  */
+@Service
 public class MathManager {
 
     private static final Logger logger = LoggerFactory.getLogger(MathManager.class);
