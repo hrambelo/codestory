@@ -84,7 +84,7 @@ public abstract class AMoney {
     public abstract Object accept(IVisitor visitor, Combinaison combinaison);
 
     /**
-     * Populate a particular combinaison with a value
+     * Populate a particular combinaison with the actual (i.e.: this) money value
      * @param combinaison the particular combinaison
      * @param value th value to be set
      * @return the populated combinaison
