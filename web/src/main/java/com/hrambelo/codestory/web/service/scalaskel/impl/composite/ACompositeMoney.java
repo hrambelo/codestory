@@ -6,8 +6,8 @@ import com.hrambelo.codestory.web.service.scalaskel.Combinaison;
 import com.hrambelo.codestory.web.service.scalaskel.IVisitor;
 
 /**
- * Represent a money that can be divided into many other money (child),
- * child's value is always lesser than current money's
+ * Represent a money mixin : one that can be divided into many other money (but only one direct child per parent),
+ * child's value is always lower than parent's value
  * play the role of Composite in composite pattern,
  * play the role of Element on visitor design pattern especially for composite
  * Handle common aspect of each composable money and their behaviour for DRY
@@ -25,6 +25,20 @@ public abstract class ACompositeMoney extends AMoney {
     ACompositeMoney(String name, int value, AMoney child) {
         super(name, value);
         this.child = child;
+    }
+
+    public int compute(int total) {
+        if (total < value) {
+            getChild().compute(total);
+        }
+        return total / value;
+    }
+
+    public int modulo(int total){
+        if (total < value){
+            getChild().modulo(total);
+        }
+        return total % value;
     }
 
     public AMoney getChild() {

@@ -21,6 +21,14 @@ public class Foo extends AMoney {
         super("Foo", 1);
     }
 
+    public int compute(int total) {
+        return total / value;
+    }
+
+    public int modulo(int total){
+        return total % value;
+    }
+
     @Override
     public Object accept(IVisitor visitor, Combinaison combinaison) {
         return visitor.visitBasicMoney(this, combinaison);

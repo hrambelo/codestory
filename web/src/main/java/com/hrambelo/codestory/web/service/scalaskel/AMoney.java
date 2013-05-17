@@ -53,40 +53,26 @@ public abstract class AMoney {
      * @throws UnsupportedOperationException
      */
     public AMoney getChild(){
-        throw new UnsupportedOperationException("unallowed as default operation");
+        throw new UnsupportedOperationException("Sorry, by default I am selective to who may see my childs");
     }
 
     /**
      * Each money is able to know how many of them match a total,
-     * if total is lesser than current money's value then try with current money's child
+     * if total is lower than current money's value then try with current money's child
      * @param total
      * @return quantity of current money matching total
      */
     public int compute(int total) {
-        try {
-            if (total < value) {
-                getChild().compute(total);
-            }
-        } catch (UnsupportedOperationException e) {
-            //System.out.println("money" +name+ "is leaf");
-        }
-        return total / value;
+        throw new UnsupportedOperationException("Sorry, by default I cant compute");
     }
 
     /**
-     * Get the rest of the division, if total is lesser than current money's value then pass to current money's child
+     * Get the rest of the division, if total is lower than current money's value then pass to current money's child
      * @param total
      * @return the rest of the division
      */
     public int modulo(int total){
-        try{
-            if (total < value){
-                getChild().modulo(total);
-            }
-        } catch (UnsupportedOperationException e) {
-            System.out.println("money" +name+ "is leaf");
-        }
-        return total % value;
+        throw new UnsupportedOperationException("Sorry, by default I dunnot modulo");
     }
 
     /**
