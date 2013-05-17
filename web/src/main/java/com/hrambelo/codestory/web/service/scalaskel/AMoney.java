@@ -28,7 +28,7 @@ public abstract class AMoney {
     /**
      * Value represent its amount
      */
-    private final int value;
+    protected final int value;
 
     /**
      *
